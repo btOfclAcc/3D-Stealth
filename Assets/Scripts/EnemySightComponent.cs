@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySightComponent : MonoBehaviour
 {
@@ -47,10 +48,11 @@ public class EnemySightComponent : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (CanSeePlayer())
         {
+            gameObject.GetComponent<NavMeshAgent>().speed = 8f;
             spotlight.color = spottedLight;
             target.position = player.position;
             playerLastSeen.position = player.position;
@@ -58,10 +60,12 @@ public class EnemySightComponent : MonoBehaviour
         }
         else if (!reachedLastSeen)
         {
+            target.position = playerLastSeen.position;
             return;
         }
         else
         {
+            gameObject.GetComponent<NavMeshAgent>().speed = 3.5f;
             spotlight.color = neutralLight;
             target.position = currWaypoint.transform.position;
         }
