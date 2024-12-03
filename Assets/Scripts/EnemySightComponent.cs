@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,7 +14,6 @@ public class EnemySightComponent : MonoBehaviour
     [SerializeField] private GameObject currWaypoint;
     [SerializeField] private GameObject nextWaypoint;
 
-    private GameObject tempWaypoint;
     private Color neutralLight;
     private Color spottedLight;
     public bool reachedLastSeen;
@@ -73,6 +69,7 @@ public class EnemySightComponent : MonoBehaviour
 
     public void changeWaypoint()
     {
+        GameObject tempWaypoint;
         tempWaypoint = currWaypoint;
         currWaypoint = nextWaypoint;
         nextWaypoint = tempWaypoint;
