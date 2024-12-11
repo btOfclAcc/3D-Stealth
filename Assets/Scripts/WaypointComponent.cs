@@ -11,7 +11,7 @@ public class WaypointComponent : MonoBehaviour
     {
         if (other.gameObject == guard)
         {
-            guardSight.changeWaypoint();
+            guardSight.ChangeWaypoint();
         }
     }
 }
